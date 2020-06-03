@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+          <style>
+    
+        *{
+            margin: 0;
+            padding: 0;
+        }
+.timeline {
+  display: flex;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  flex-direction: column;
+  max-width: 700px;
+  position: relative;
+}
+.timeline__content-title {
+  font-weight: normal;
+  font-size: 45px;
+  margin: -10px0 0 0;
+  transition: 0.4s;
+  padding: 0 10px;
+  box-sizing: border-box;
+  font-family: 'Big Caslon',serif;
+  color: #fff;
+}
+.timeline__content-desc {
+  margin: -10px,0px,0px,0px;
+  font-size: 15px;
+  box-sizing: border-box;
+  color: rgba(255, 255, 255, .7);
+  font-family: 'Avenir LT W01 35 Light',sans-serif;
+  font-weight: normal;
+  line-height: 25px;
+}
+.timeline:before {
+  position: absolute;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  margin-left: -1px;
+  content: "";
+  background: rgba(255, 255, 255, .07);
+}
+@media only screen and (max-width: 767px) {
+  .timeline:before {
+    left: 40px;
+  }
+}
+.timeline-item {
+  padding: 40px 0;
+  opacity: 0.3;
+  filter: blur(2px);
+  transition: 0.5s;
+  box-sizing: border-box;
+  width: calc(50% - 40px);
+  display: flex;
+  position: relative;
+  transform: translateY(-80px);
+}
+.timeline-item:before {
+  content: attr(data-text);
+  letter-spacing: 3px;
+  width: 100%;
+  position: absolute;
+  color: rgba(255, 255, 255, .5);
+  font-size: 13px;
+  font-family: 'Avenir LT W01 35 Light',sans-serif;
+  border-left: 2px solid rgba(255, 255, 255, .5);
+  top: 70%;
+  margin-top: -5px;
+  padding-left: 15px;
+  opacity: 0;
+  right: calc(-100% - 56px);
+}
+.timeline-item:nth-child(even) {
+  align-self: flex-end;
+}
+.timeline-item:nth-child(even):before {
+  right: auto;
+  text-align: right;
+  left: calc(-100% - 56px);
+  padding-left: 0;
+  border-left: none;
+  border-right: 2px solid rgba(255, 255, 255, .5);
+  padding-right: 15px;
+}
+.timeline-item--active {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
+}
+.timeline-item--active:before {
+  top: 50%;
+  transition: 0.3s all 0.2s;
+  opacity: 1;
+}
+.timeline-item--active .timeline__content-title {
+  margin: 0px 0 20px 0;
+}
+@media only screen and (max-width: 767px) {
+  .timeline-item {
+    align-self: baseline !important;
+    width: 100%;
+    padding: 0 30px 150px 80px;
+  }
+  .timeline-item:before {
+    left: 10px !important;
+    padding: 0 !important;
+    top: 50px;
+    text-align: center !important;
+    width: 60px;
+    border: none !important;
+  }
+  .timeline-item:last-child {
+    padding-bottom: 40px;
+  }
+}
+.timeline__img {
+  max-width: 100%;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, .4);
+}
+.timeline-container {
+  width: 100%;
+  position: relative;
+  padding: 80px 0;
+  transition: 0.3s ease 0s;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.timeline-container:before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+ background: rgba(0,0,0,0.6);
+  content: "";
+}
+.timeline-header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+}
+.timeline-header__title {
+  color: #fff;
+  font-size: 55px;
+  font-family: 'Avenir LT W01 35 Light',sans-serif;
+  font-weight: normal;
+  margin: 0;
+}
+.timeline-header__subtitle {
+  color: rgba(255, 255, 255, .5);
+  font-family: 'Avenir LT W01 35 Light',sans-serif;
+  font-size: 40px;
+  letter-spacing: 5px;
+  margin: 10px 0 0 0;
+  font-weight: normal;
+}
+.demo-footer {
+  padding: 60px 0;
+  text-align: center;
+}
+.demo-footer a {
+  color: #999;
+  display: inline-block;
+  font-family: Cardo;
+}
+
+.header{
+    width: 100%;
+    background-color: rgba(0,0,0,.2);
+}
+.header ul{
+    text-align: center;
+        }
+ .header ul li{
+    list-style: none;
+    display: inline-block;
+        }
+  .header ul li a{
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 600;
+    padding: 10px 24px;
+        }
+.header ul li a:hover{
+    background color: #211b4385;
+        }
+				.cf:after {
+			content: " "; /* 1 */
+			display: table; /* 2 */
+		}
+
+		.cf:after {
+			clear: both;
+		}
+
+		/**
+		 * For IE 6/7 only
+		 * Include this rule to trigger hasLayout and contain floats.
+		 */
+		.cf {
+			*zoom: 1;
+		}
+		.cf img {float:left;}
+
+    </style>
+        
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Professional Practice</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <!-- Third party plugin CSS-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">Sera Su Abaç Architects</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="index.html">Timeline</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="assignments.html">Assignments</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="discussions.html">Discussions</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="seminars.html">Seminars</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="workshop.html">Workshop</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-center text-center">
+                    <div class="col-lg-10 align-self-end">
+                        <h1 class="text-uppercase text-white font-weight-bold">journey to become an architect</h1>
+						<center>
+						<hr class="divider my-4" />
+						</center>
+					</div>
+                    <div class="col-lg-8 align-self-baseline">
+                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#timeline">Find Out More</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!---timeline-->
+	<section class="page-section" id="timeline">
+
+         <div class="timeline-container" id="timeline-1">
+  <div class="timeline-header">
+    <h2 class="timeline-header__title">PROFESSIONAL PRACTICE TIMELINE</h2>
+    <h3 class="timeline-header__subtitle">Final Portfolio</h3>
+  </div>
+             
+  <div class="timeline">
+    <div class="timeline-item" data-text="3 February 2020">
+      <div class="timeline__content"><img class="timeline__img" src="assets/img/Assignments/Assignment-timeline-1.jpg" />
+        <h2 class="timeline__content-title">What is Architecture?</h2>
+        <p class="timeline__content-desc">A set of images and quotes that express and defining architecture for me. The meaning of architecture can change from person to person depending on their experiences, backgrounds, culture, emotions, ideologies, motivations, expectations, educations, professions…. etc. As a soon-to-be architect the meaning of architecture for me is very deep and complex. Sometimes I see it as the medium that combines art and science to create unique products, but sometimes I see it as a time machine that takes you from the present all the way to the past or to the future. Architecture as a profession, and its education can sometimes be really stressful and dramatic, at those times the meaning of architecture becomes something dark; it evokes feeling like perfectionism, uncertainty, time management, precision, endless trials….etc.</p>
+         <a class="btn btn-light btn-xl js-scroll-trigger" href="assets/pdf/Assignment-1.pdf">For More...</a>
+        </div>
+    </div>
+      
+    <div class="timeline-item" data-text="6 February 2020">
+      <div class="timeline__content"><img class="timeline__img" src="assets/img/Assignments/Assignment-timeline-2.jpg"/>
+        <h2 class="timeline__content-title">Poster Competition</h2>
+        <p class="timeline__content-desc">A competition to choose to best design to use as a course poster. The format and layout should be flexible enough to use its variations for each event, lecture, workshop…etc. This assignment thought us how to prepare a design layout that is flexible enough to be used as a template for course events, seminars and lectures. While aesthetics is an important aspect of design, flexibility and compatibility are also important factors to consider.  The content was already provided to use; which was the summary of the syllabus and the original course content, however the challenge was to determine the length of this text and how to represent it in the poster.</p>
+         <a class="btn btn-light btn-xl js-scroll-trigger" href="assets/pdf/Assignment-2.pdf">For More...</a>
+       </div>
+    </div>
+      
+    <div class="timeline-item" data-text="10 February 2020">
+      <div class="timeline__content"><img class="timeline__img" src="assets/img/Assignments/Assignment-timeline-3.jpg"/>
+        <h2 class="timeline__content-title">Creating Your Firm</h2>
+        <p class="timeline__content-desc">First steps to creating our own architecture/interior architecture/ design firm.  Goal was to create a logo, business card and A4 letter document that will reflect our own architectural profession as an identity and our own approach to architecture. The logo that we have created was going to represent our firm’s definition of architecture, our approach to architecture, the projects that we do, the style and taste that we have...etc. Therefore, its design and how it is used in different documents such as A4 letter documents, business cards and related architectural documents are all factors that we should bear in mind while designing our logo. </p>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="assets/pdf/Assignment-3.pdf">For More...</a>      
+       </div>
+    </div>
+      
+    <div class="timeline-item" data-text="13 February 2020">
+      <div class="timeline__content"><img class="timeline__img" src="assets/img/discussion/Discussion-1-timeline.jpg"/>
+        <h2 class="timeline__content-title">Business Development, Marketing and Networking</h2>
+        <p class="timeline__content-desc"> This discussion shows the alternative paths that can be chosen to start your career once you complete your bachelor’s degree in architecture. Studying architecture can open many doors; you can choose to become a licensed architect, or choose to continue in an entirely different path. You can choose to work in careers related with art and history, technology and community development, education and many more.  For the  ones who would like to stay in architecture path; they can search for different ways to find project and business potentials; through market, by creating a solid and strong network, by participating in competitions, by building up your reputation as a designer or an architect. It is important to participate in events related with architecture and design in order to build your network as well as reputation, and to search for job opportunities. </p>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="assets/pdf/Discussion-1.pdf">For More...</a>
+       </div>
+    </div>
+	
+	<div class="timeline-item" data-text="13 February 2020">
+      <div class="timeline__content"><img class="timeline__img" src="assets/img/discussion/Discussion-2-timeline.jpg"/>
+        <h2 class="timeline__content-title">Major Stakeholders</h2>
+        <p class="timeline__content-desc">This discussion explained the potential stakeholders in the architecture profession which are referred to as “Major Stakeholders”; their importance and role in the entire project development and application phases. These potential stakeholders included; the clients, designers, project team, workers, instructors, students, the public itself, agents, chambers, associations that are responsible from or related with architectural or other design works.  One of the main scopes of this lecture was to understand the “entire project design” process, that should always be perceived as a “total organization and a process management issue”.  We also discussed the problems and conditions that architects and designers often face in their professional practice. </p>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="assets/pdf/Discussion-2.pdf">For More...</a>
+       </div>
+    </div>
+      
+    <div class="timeline-item" data-text="17 February 2020">
+      <div class="timeline__content"><img class="timeline__img" src="assets/img/workshop/workshop-1-timeline.jpg"/>
+        <h2 class="timeline__content-title">Project Proposal: High Rise vs. Low Rise</h2>
+        <p class="timeline__content-desc"> This was the first workshop practice that we had in this course, which simulated the process of preparing and presenting a project proposal to a client in order to win the bidding process. The aim of this workshop was to understand the process of preparing and presenting a project proposal, and the meeting that is held before the bidding process from the perspective of the client, and from the perspective of the firm that is entering to a tender. Some of the most important aspects of this workshop practice included; understanding the effect that different design proposals have on the prepared project proposals, the way that a firm should present their proposals in the meeting and as a firm to be prepared for all the questions that the client might ask during the meeting and the presentation.</p>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="assets/pdf/Workshop-1.pdf">For More...</a>
+       </div>
+    </div>
+      
+    <div class="timeline-item" data-text="19 February 2020">
+      <div class="timeline__content"><img class="timeline__img" src="assets/img/guest-lecture/Guest-Lecture-1.jpg"/>
+        <h2 class="timeline__content-title">Construction of Public Buildings & Legal Processes</h2>
+        <p class="timeline__content-desc">The Ministry of Environment and Urbanization has a significant role in the design and development of both the urban environments and the built environments. Their major function is to set standards law and regulations related to environmental issues, to create masterplans for urban projects, to control and participate in the process of repair and/or renovation projects, to determine the contract specifications, to create annual unit prices, consider and apply the climate change in all kinds of projects, and to determine general policies. Government’s involvement in projects may change according to the type and scale of project; they can be directly involved in the design of ministry buildings, embassy buildings, education buildings, health facilities, social facilities, parks…etc. </p>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="assets/pdf/Guest-1.pdf">For More...</a>
+       </div>
+    </div>
+      
+    <div class="timeline-item" data-text="24 February 2020">
+      <div class="timeline__content"><img class="timeline__img" src="assets/img/Assignments/Assignment-timeline-4.jpg"/>
+        <h2 class="timeline__content-title">Creating a Project Brief</h2>
+        <p class="timeline__content-desc">The project brief of our design project for the studio course, we were to assume that it will be a real-life project including all stages of a building design project process. An assignment teaching the importance of project brief; what its contents are, how it is prepared and organized and most importantly how it should be presented. A project brief is a document that outlines a summary of the project ideas and features. Most of the time, it highlights all of the milestones that the design team has set for the project, and shows all the work that needs to be done. It should define the client’s requirements for the project and for the development of the built asset. </p>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="assets/pdf/Assignment-4.pdf">For More...</a>
+       </div>
+    </div>
+      
+    <div class="timeline-item" data-text="5 March 2020">
+      <div class="timeline__content"><img class="timeline__img" src="assets/img/discussion/Discussion-3-timeline.jpg"/>
+        <h2 class="timeline__content-title">Other Stakeholders</h2>
+        <p class="timeline__content-desc">
+			This discussion explained the potential “Secondary/Other Stakeholders” in the architecture practice; their importance, their stakes, the opportunities that they present, their challenges or threats to the project, their responsibilities, and strategies or actions that can be used and made to engage with these stakeholders. Secondary stakeholders include public, agents, chambers, associations, NGOs (which could be political, social or other), environmentalists, competitors, consumer groups, tourists, media and many more. These stakeholders often have an indirect relationship with the company but they can still be influential towards the company and the project. 		  </p>
+       <a class="btn btn-light btn-xl js-scroll-trigger" href="assets/pdf/Discussion-2.pdf">For More...</a>
+       </div>
+    </div>
+      
+    <div class="timeline-item" data-text="11 March 2020">
+      <div class="timeline__content"><img class="timeline__img" src="assets/img/guest-lecture/Guest-Lecture-2.jpg"/>
+        <h2 class="timeline__content-title">From Design to Construction</h2>
+        <p class="timeline__content-desc">Architectural practice includes a process of understanding and consistent proposing that you start every morning, as it includes questioning, interpretation and authenticity starting from education. This eliminates the routine which may seem like something to enjoy; however, it may become too demanding time to time. In the case of Turkey perception of the term economy as low budget proposals, loss of context while trying to obtain something either contemporary/traditional, constant revisions in regulations, complex technical requirements due to rapid change in technology and perception of comfort makes the process more challenging. Your contribution is required even after the construction process. Practice in architecture is a respected profession, the essence of it is becomes clearer every day while surrounding with such rapid action of construction.</p>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="assets/pdf/Guest-2.pdf">For More...</a>
+       </div>
+    </div>
+      
+  <div class="timeline-item" data-text="12 March 2020">
+      <div class="timeline__content"><img class="timeline__img" src="assets/img/discussion/Discussion-4-timeline.jpg"/>
+        <h2 class="timeline__content-title">Project Delivery Methods</h2>
+        <p class="timeline__content-desc">
+		Developing and building an architectural project consists of three main stages; pre-project phase, project (execution) phase and lastly the post project phase. This discussion focused on the “project delivery methods” which is part of the second; project phase. Project delivery method is a comprehensive process that includes planning of the project, design of the project and its construction that is required to execute and compete a building facility. Choosing the proper and most efficient project delivery method is one of the most important steps of this phase, because this method determines the strategy that will be used by the entire project team to communicate with one another. </p>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="assets/pdf/Discussion-3.pdf">For More...</a>
+      </div>
+    </div>
+      
+   <div class="timeline-item" data-text="16 March 2020">
+      <div class="timeline__content"><img class="timeline__img" src="assets/img/discussion/Discussion-5-timeline.jpg"/>
+        <h2 class="timeline__content-title">Future in Academia</h2>
+        <p class="timeline__content-desc">This discussion highlights the advantages and disadvantages of staying in academia after pursuing a bachelor’s degree in architecture. After graduating, before deciding on your future plans it is important to consider and get to know all the possible things you can do with your life and career. Staying in academia and becoming a researcher or an instructor/professor are some of these options that we have. It is important to understand the role of architecture in the academic world and how it differentiates from architecture as a practice. While academia is theory, contemplation, abstract ideas, more research and thinking, architecture profession is more practice, experience, acting, concrete applications, politics and vary from place to place, person to person, and business to business. </p>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="assets/pdf/Discussion-4.pdf">For More...</a>
+      </div>
+    </div>
+	
+	<div class="timeline-item" data-text="23 March 2020">
+      <div class="timeline__content"><img class="timeline__img" src="assets/img/workshop/workshop-2-timeline.jpg"/>
+        <h2 class="timeline__content-title">Arch (Pr)act Correspondencies</h2>
+        <p class="timeline__content-desc">The aim of this workshop practice is to simulate the pre-project phases in an architectural project, in order to understand the entire process and its importance to the rest of the phases in the project. Each group is assigned to work with a different project scenario that requires different pre-project phase preparations.  These scenarios vary according to their function, scale, location and services provided but the important thing is to understand how these variations effect the documents that are prepared. All groups are expected to develop alternative project proposals based on their scenarios. We are expected to prepare a pre-project proposal for the scenario of the project that we are assigned to. </p>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="assets/pdf/Workshop-2.pdf">For More...</a>
+       </div>
+    </div>
+      
+      <div class="timeline-item" data-text="30 March 2020">
+      <div class="timeline__content"><img class="timeline__img" src="assets/img/discussion/Discussion-6-timeline.jpg"/>
+        <h2 class="timeline__content-title">Awards & Competitions</h2>
+        <p class="timeline__content-desc">In this discussion we talked about the importance and impact of architectural design competitions on the architectural industry, which helps people to push their boundaries and gain more experience in design, critical thinking, time management and presentation. Participating in an architectural competition is often a good experience to have, and may help individuals with their future careers. The goal in most of the competitions is to help people improve their architectural expression and presentation techniques while meeting with their colleagues. Awards are an important part of the competitions; they are the best way to encourage and motivate individuals to compete with one another and to push them to think outside of the box.   </p>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="assets/pdf/Discussion-5.pdf">For More...</a>
+       </div>
+    </div>
+      
+      <div class="timeline-item" data-text="4 April 2020">
+      <div class="timeline__content"><img class="timeline__img" src="assets/img/discussion/Discussion-7-timeline.jpg"/>
+        <h2 class="timeline__content-title">Construction & Site Services</h2>
+        <p class="timeline__content-desc">This discussion focuses on the role of architecture in the design and in the construction phase of the project. Most people believe that an architect’s responsibilities in the project ends after the design phase, but in reality, their responsibilities and duties for the project continues all the way to the end to the “post project” phase. Construction phase, which comes right after the design phase is one of the most difficult phases of the project, because it is the phase where an idea becomes physically manifested. Therefore, all the documents related with this phase have a great importance and should be prepared carefully, which is where the role of architect becomes important. Since architect now all about the project their evaluations and controls over the situations on site are significantly important. Which means that having an architect active on site will always have a positive impact on the overall process of the project. It is also a good and important experience for them in terms of getting into the world of construction, dealing with workers, handling problems and learning how to communicate with other members of the project team.</p>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="assets/pdf/Discussion-6.pdf">For More...</a>
+       </div>
+    </div>
+      
+      <div class="timeline-item" data-text="13 April 2020">
+      <div class="timeline__content"><img class="timeline__img" src="assets/img/Assignments/Assignment-timeline-5.jpg"/>
+        <h2 class="timeline__content-title">Roadmap to Future</h2>
+        <p class="timeline__content-desc">As a soon-to-be architect where do we see ourselves in the next five years? What are our plans and goals after graduation? After graduation there are lots of different paths that fresh architect can choose to follow. These paths include; continuing your education and pursuing a master’s degree, becoming an academician, finding a job in a corporate firm/office, becoming a project architect, working in the construction field, starting your own company, becoming a freelance worker, or any other suitable path. But now is the time to start planning our road map for the next five years after our graduation. </p>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="assets/pdf/Assignment-5.pdf">For More...</a>
+       </div>
+    </div>
+      
+      <div class="timeline-item" data-text="15 April 2020">
+      <div class="timeline__content"><img class="timeline__img" src="assets/img/guest-lecture/Guest-Lecture-3.jpg"/>
+        <h2 class="timeline__content-title">Environmental Friendly “Green” Buildings & Certification Systems</h2>
+        <p class="timeline__content-desc">Green building in architecture is the practice of designing and building structures that are sensitive and responsive to environmental conditions, meaning that they are environmentally responsible and resource-efficient throughout the building’s life span and life cycle which starts from its design process, continues with the construction, operation, maintenance, renovation/repair and even deconstruction phases. There are certification systems that controls and validates these green buildings, since built environment in general has an extensive direct and indirect impact on its environment. These certification systems include; green building standards, certifications and rating systems that aims at minimizing the impact of the built structure on the natural environment that it is situated in through the use of sustainable design approaches. Building Research Establishment’s Environmental Assembly Method (BREEAM), Green Building Council (USGBC), Leadership in Energy and Environmental Design (LEED) are examples to some of these rating systems for new construction. </p>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="assets/pdf/Guest-3.pdf">For More...</a>
+       </div>
+    </div>
+      
+      <div class="timeline-item" data-text="22 April 2020">
+      <div class="timeline__content"><img class="timeline__img" src="assets/img/guest-lecture/Guest-Lecture-4.jpg"/>
+        <h2 class="timeline__content-title">Project Management in the Construction Sector</h2>
+        <p class="timeline__content-desc">This seminar will give an overview of construction management and introduce a new framework for re-organizing and using the “traditional” project management tool-kit. The framework is based on an interpretive analysis of 26 “stories" of project management in Turkey and around the world. The first author Selçuk Alten will illustrate the main concepts by chronicling these stories. The discussion will also include short histories (and critiques) of the sector in Turkey and of project management globally; the importance of design management and role of design thinking in project management; recommendations for legislation and rules governing the sector; and for project management
+		as part of higher education.
+		</p>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="assets/pdf/Guest-4.pdf">For More...</a>
+       </div>
+    </div>
+      
+      <div class="timeline-item" data-text="29 April 2020">
+      <div class="timeline__content"><img class="timeline__img" src="assets/img/guest-lecture/Guest-Lecture-5.jpg"/>
+        <h2 class="timeline__content-title">Where Are They Now?</h2>
+        <p class="timeline__content-desc">Possible roads that a newly graduate architect can choose to pursue may include; achieving a master degree, continuing in the academia, working as a freelance, working in a corporate/office, starting your own business, or any other possible road. There are lots of architecture and design competitions that we can enter, which will have a positive impact on our future plans. The experience you get when you join a competition, whether individually or as a team is very important, because it is a completely different format than both education and real-work. Some of the competitions that we can enter while being a student or as a graduate include; TAK (Tasarım Araştrıma Katılım), ARCHIWORLD Academy, KMKD, Aura and many more. </p>
+        <a class="btn btn-light btn-xl js-scroll-trigger" href="assets/pdf/Guest-5.pdf">For More...</a>
+      </div>
+    </div>
+           
+  </div>
+</div>
+</section>
+        <!-- Footer-->
+        <footer class="bg-light py-5">
+            <div class="container"><div class="small text-center text-muted">Copyright © Doğacan Kaynak & Sera Su Abaç</div></div>
+        </footer>
+		
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+ <script>
+    
+    (function($) {
+  $.fn.timeline = function() {
+    var selectors = {
+      id: $(this),
+      item: $(this).find(".timeline-item"),
+      activeClass: "timeline-item--active",
+      img: ".timeline__img"
+    };
+    selectors.item.eq(0).addClass(selectors.activeClass);
+    selectors.id.css(
+      "background-image",
+      "url(" +
+        selectors.item
+          .first()
+          .find(selectors.img)
+          .attr("src") +
+        ")"
+    );
+    var itemLength = selectors.item.length;
+    $(window).scroll(function() {
+      var max, min;
+      var pos = $(this).scrollTop();
+      selectors.item.each(function(i) {
+        min = $(this).offset().top;
+        max = $(this).height() + $(this).offset().top;
+        var that = $(this);
+        if (i == itemLength - 2 && pos > min + $(this).height() / 2) {
+          selectors.item.removeClass(selectors.activeClass);
+          selectors.id.css(
+            "background-image",
+            "url(" +
+              selectors.item
+                .last()
+                .find(selectors.img)
+                .attr("src") +
+              ")"
+          );
+          selectors.item.last().addClass(selectors.activeClass);
+        } else if (pos <= max - 40 && pos >= min) {
+          selectors.id.css(
+            "background-image",
+            "url(" +
+              $(this)
+                .find(selectors.img)
+                .attr("src") +
+              ")"
+          );
+          selectors.item.removeClass(selectors.activeClass);
+          $(this).addClass(selectors.activeClass);
+        }
+      });
+    });
+  };
+})(jQuery);
+
+$("#timeline-1").timeline();
+
+    </script>
+    </body>
+</html>
